@@ -1,22 +1,20 @@
 def optimized_code(numbers):
-    result = []
-    max_num = float('-inf')
-    count_dict = {}
+    result = ""
+    max_num = max(numbers)  # Get the maximum number in the list
+    count_dict = {}  # Dictionary to store the counts of numbers
 
     for num in numbers:
         if num % 2 == 0:
-            result.append(f"Square of {num} is {num * num}")
+            square = num * num
+            result += f"Square of {num} is {square}\n"
         
-        max_num = max(max_num, num)  # Update max number
-        count_dict[num] = count_dict.get(num, 0) + 1  # Count frequencies
+        # Count occurrences of each number
+        count_dict[num] = count_dict.get(num, 0) + 1
 
-    result.append(f"\nMax number is {max_num}")
-    result.append("Number counts:")
+    result += f"\nMax number is {max_num}\n"
+    result += "Number counts:\n"
+
     for num, count in count_dict.items():
-        result.append(f"{num}: {count}")
+        result += f"{num}: {count}\n"
 
-    return "\n".join(result)
-
-# Example usage
-numbers = [1, 2, 2, 3, 4]
-print(optimized_code(numbers))
+    return result
